@@ -153,13 +153,15 @@ body {
   pointer-events: none;
 }
 
-.glass-hover:hover {
-  border-color: var(--glass-hover-border);
-  box-shadow: 0 10px 30px var(--glass-hover-shadow);
-}
+@media (hover: hover) and (pointer: fine) {
+  .glass-hover:hover {
+    border-color: var(--glass-hover-border);
+    box-shadow: 0 10px 30px var(--glass-hover-shadow);
+  }
 
-.glass-hover:hover::before {
-  opacity: 1;
+  .glass-hover:hover::before {
+    opacity: 1;
+  }
 }
 
 .glass-nav {
