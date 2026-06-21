@@ -61,7 +61,7 @@ export default function Layout() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-              className="glass-nav absolute inset-x-0 top-full flex flex-col gap-1 px-6 py-4 lg:hidden"
+              className="absolute inset-x-0 top-full flex flex-col gap-1 border-b border-(--color-border) bg-(--color-bg) px-6 py-5 shadow-xl lg:hidden"
             >
               {navLinks.map((link, i) => (
                 <motion.div
