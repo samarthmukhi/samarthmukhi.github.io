@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-serif: "Source Serif 4", Georgia, serif;
+  --color-bg: #1c1d21;
+  --color-bg-raised: #24252b;
+  --color-text: #f2f2f0;
+  --color-text-muted: #b7b8c0;
+  --color-text-faint: #7c7d85;
+  --color-accent: #85b7eb;
+  --color-accent-strong: #58a6ff;
+  --color-border: #34353c;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+@media (min-width: 769px) {
+  body,
+  a,
+  button {
+    cursor: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #0d1117;
+}
