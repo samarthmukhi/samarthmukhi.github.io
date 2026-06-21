@@ -3,8 +3,11 @@ import { motion } from "framer-motion";
 import WireKnot from "../components/WireKnot";
 import { profile } from "../data/content";
 import { fadeUp, staggerContainer } from "../lib/motion";
+import { useIntro } from "../lib/introContext";
 
 export default function Home() {
+  const { done } = useIntro();
+
   return (
     <section className="relative">
       <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-10 px-6 py-24 md:min-h-[72vh] md:flex-row md:py-32">
@@ -12,7 +15,7 @@ export default function Home() {
           className="max-w-md text-center md:text-left"
           variants={staggerContainer}
           initial="hidden"
-          animate="show"
+          animate={done ? "show" : "hidden"}
         >
           <motion.p
             variants={fadeUp}
@@ -61,7 +64,7 @@ export default function Home() {
         <motion.div
           className="flex flex-1 justify-center"
           initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
+          animate={done ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.85 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
         >
           <WireKnot className="h-64 w-64 md:h-80 md:w-80" />
