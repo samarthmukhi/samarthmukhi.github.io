@@ -9,6 +9,10 @@ export default function ParticleField({ density = 4000, mobileDensity = 7000, ma
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
+    const rgb =
+      getComputedStyle(document.documentElement)
+        .getPropertyValue("--particle-rgb")
+        .trim() || "242,242,240";
 
     let w = 0;
     let h = 0;
@@ -66,7 +70,7 @@ export default function ParticleField({ density = 4000, mobileDensity = 7000, ma
         const glow = nearMouse < 70 ? (1 - nearMouse / 70) * 0.5 : 0;
         ctx.beginPath();
         ctx.arc(px, py, p.r + glow, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(242,242,240,${Math.min(maxAlpha, p.baseAlpha + glow)})`;
+        ctx.fillStyle = `rgba(${rgb},${Math.min(maxAlpha, p.baseAlpha + glow)})`;
         ctx.fill();
       }
     };
@@ -83,7 +87,7 @@ export default function ParticleField({ density = 4000, mobileDensity = 7000, ma
       for (const p of particles) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(242,242,240,${p.baseAlpha})`;
+        ctx.fillStyle = `rgba(${rgb},${p.baseAlpha})`;
         ctx.fill();
       }
     }

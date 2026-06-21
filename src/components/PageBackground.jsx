@@ -1,10 +1,12 @@
 import { useEffect, useRef } from "react";
 import ParticleField from "./ParticleField";
+import { useTheme } from "../lib/theme";
 
 // Site-wide ambient layer: a fixed, full-viewport particle field plus a soft
 // glow that trails the cursor. Sits behind all content via negative z-index.
 export default function PageBackground() {
   const glowRef = useRef(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const glow = glowRef.current;
@@ -45,13 +47,13 @@ export default function PageBackground() {
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
     >
-      <ParticleField density={6500} mobileDensity={11000} maxAlpha={0.6} />
+      <ParticleField key={theme} density={6500} mobileDensity={11000} maxAlpha={0.6} />
       <div
         ref={glowRef}
         className="absolute top-0 left-0 h-[40rem] w-[40rem] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(88,166,255,0.10) 0%, transparent 65%)",
+            "radial-gradient(circle, rgba(var(--glow-rgb), 0.1) 0%, transparent 65%)",
           filter: "blur(40px)",
         }}
       />

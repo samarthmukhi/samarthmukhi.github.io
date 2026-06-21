@@ -4,6 +4,8 @@
   --font-sans: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
   --font-serif: "Instrument Serif", Georgia, serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Dark palette (default) */
   --color-bg: #1c1d21;
   --color-bg-raised: #24252b;
   --color-text: #f2f2f0;
@@ -12,6 +14,52 @@
   --color-accent: #85b7eb;
   --color-accent-strong: #58a6ff;
   --color-border: #34353c;
+}
+
+/* Theme hooks for the canvas/3D layers and glass surfaces (dark default). */
+:root {
+  --particle-rgb: 242, 242, 240;
+  --knot-color: #f2f2f0;
+  --glow-rgb: 88, 166, 255;
+  --selection-text: #0d1117;
+  --glass-bg: rgba(255, 255, 255, 0.045);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --glass-shadow: rgba(0, 0, 0, 0.25);
+  --glass-hover-border: rgba(133, 183, 235, 0.35);
+  --glass-hover-shadow: rgba(0, 0, 0, 0.35);
+  --glass-spot: rgba(133, 183, 235, 0.16);
+  --nav-bg: rgba(28, 29, 33, 0.5);
+  --nav-border: rgba(255, 255, 255, 0.08);
+  --input-bg: rgba(255, 255, 255, 0.04);
+  --input-border: rgba(255, 255, 255, 0.1);
+  --input-bg-focus: rgba(255, 255, 255, 0.06);
+}
+
+:root[data-theme="light"] {
+  --color-bg: #f5f4ef;
+  --color-bg-raised: #ffffff;
+  --color-text: #1b1c20;
+  --color-text-muted: #52535a;
+  --color-text-faint: #8a8b92;
+  --color-accent: #1f6feb;
+  --color-accent-strong: #0c447c;
+  --color-border: #e2e0d8;
+
+  --particle-rgb: 28, 29, 33;
+  --knot-color: #1b1c20;
+  --glow-rgb: 31, 111, 235;
+  --selection-text: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(20, 20, 25, 0.08);
+  --glass-shadow: rgba(0, 0, 0, 0.06);
+  --glass-hover-border: rgba(31, 111, 235, 0.4);
+  --glass-hover-shadow: rgba(0, 0, 0, 0.1);
+  --glass-spot: rgba(31, 111, 235, 0.12);
+  --nav-bg: rgba(245, 244, 239, 0.6);
+  --nav-border: rgba(20, 20, 25, 0.07);
+  --input-bg: rgba(255, 255, 255, 0.6);
+  --input-border: rgba(20, 20, 25, 0.1);
+  --input-bg-focus: rgba(255, 255, 255, 0.85);
 }
 
 html {
@@ -24,6 +72,7 @@ body {
   color: var(--color-text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .font-serif {
@@ -51,7 +100,7 @@ body {
 
 ::selection {
   background: var(--color-accent);
-  color: #0d1117;
+  color: var(--selection-text);
 }
 
 .terminal-cursor {
@@ -73,18 +122,15 @@ body {
   }
 }
 
-/* Glassmorphism surfaces */
+/* Glassmorphism surfaces (theme-driven) */
 .glass {
-  background: rgba(255, 255, 255, 0.045);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 22px var(--glass-shadow);
 }
 
-/* Cursor-following spotlight + lift on hover.
-   backdrop-filter makes .glass a stacking context, so the z-index:-1
-   pseudo-element paints above the card surface but below its content. */
 .glass-hover {
   position: relative;
   overflow: hidden;
@@ -98,7 +144,7 @@ body {
   border-radius: inherit;
   background: radial-gradient(
     260px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(133, 183, 235, 0.16),
+    var(--glass-spot),
     transparent 60%
   );
   opacity: 0;
@@ -108,8 +154,8 @@ body {
 }
 
 .glass-hover:hover {
-  border-color: rgba(133, 183, 235, 0.35);
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
+  border-color: var(--glass-hover-border);
+  box-shadow: 0 10px 30px var(--glass-hover-shadow);
 }
 
 .glass-hover:hover::before {
@@ -117,20 +163,20 @@ body {
 }
 
 .glass-nav {
-  background: rgba(28, 29, 33, 0.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
 }
 
 .glass-input {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
 .glass-input:focus {
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--input-bg-focus);
   border-color: var(--color-accent);
 }

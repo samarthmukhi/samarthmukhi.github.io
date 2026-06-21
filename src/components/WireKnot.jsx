@@ -1,9 +1,19 @@
 import { useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { useTheme } from "../lib/theme";
 
-function Knot() {
+function Knot({ theme }) {
   const ref = useRef(null);
+
+  const color = useMemo(() => {
+    if (typeof window === "undefined") return "#f2f2f0";
+    return (
+      getComputedStyle(document.documentElement)
+        .getPropertyValue("--knot-color")
+        .trim() || "#f2f2f0"
+    );
+  }, [theme]);
 
   const edges = useMemo(() => {
     const geo = new THREE.TorusKnotGeometry(0.9, 0.26, 160, 20, 2, 3);
@@ -18,12 +28,13 @@ function Knot() {
 
   return (
     <lineSegments ref={ref} geometry={edges}>
-      <lineBasicMaterial color="#f2f2f0" transparent opacity={0.85} />
+      <lineBasicMaterial color={color} transparent opacity={0.85} />
     </lineSegments>
   );
 }
 
 export default function WireKnot({ className = "" }) {
+  const { theme } = useTheme();
   const prefersReducedMotion =
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -35,7 +46,7 @@ export default function WireKnot({ className = "" }) {
         frameloop={prefersReducedMotion ? "demand" : "always"}
         gl={{ alpha: true, antialias: true }}
       >
-        <Knot />
+        <Knot theme={theme} />
       </Canvas>
     </div>
   );

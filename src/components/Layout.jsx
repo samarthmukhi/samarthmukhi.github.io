@@ -5,6 +5,7 @@ import { navLinks, profile } from "../data/content";
 import CustomCursor from "./CustomCursor";
 import PageBackground from "./PageBackground";
 import Spotlight from "./Spotlight";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Layout() {
   const [open, setOpen] = useState(false);
@@ -26,32 +27,36 @@ export default function Layout() {
             {profile.name}
           </NavLink>
 
-          <nav className="hidden gap-7 md:flex">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                end={link.to === "/"}
-                className={({ isActive }) =>
-                  `font-mono text-xs tracking-wide uppercase transition-colors ${
-                    isActive
-                      ? "text-(--color-accent)"
-                      : "text-(--color-text-muted) hover:text-(--color-text)"
-                  }`
-                }
-              >
-                {link.label}
-              </NavLink>
-            ))}
-          </nav>
+          <div className="flex items-center gap-4 md:gap-5">
+            <nav className="hidden gap-5 md:flex lg:gap-7">
+              {navLinks.map((link) => (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  end={link.to === "/"}
+                  className={({ isActive }) =>
+                    `font-mono text-xs tracking-wide uppercase transition-colors ${
+                      isActive
+                        ? "text-(--color-accent)"
+                        : "text-(--color-text-muted) hover:text-(--color-text)"
+                    }`
+                  }
+                >
+                  {link.label}
+                </NavLink>
+              ))}
+            </nav>
 
-          <button
-            aria-label="Toggle menu"
-            onClick={() => setOpen((o) => !o)}
-            className="font-mono text-xs uppercase text-(--color-text) md:hidden"
-          >
-            {open ? "Close" : "Menu"}
-          </button>
+            <ThemeToggle />
+
+            <button
+              aria-label="Toggle menu"
+              onClick={() => setOpen((o) => !o)}
+              className="font-mono text-xs uppercase text-(--color-text) md:hidden"
+            >
+              {open ? "Close" : "Menu"}
+            </button>
+          </div>
         </div>
 
         {open && (

@@ -47,7 +47,8 @@ export default function CustomCursor() {
     <div
       ref={dotRef}
       aria-hidden="true"
-      className="pointer-events-none fixed top-0 left-0 z-[9999] hidden h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/40 opacity-0 transition-[opacity,transform] duration-150 md:block"
+      style={{ borderColor: "color-mix(in srgb, var(--color-text) 45%, transparent)" }}
+      className="pointer-events-none fixed top-0 left-0 z-[9999] hidden h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border opacity-0 transition-[opacity,transform] duration-150 md:block"
     />
   );
 }
