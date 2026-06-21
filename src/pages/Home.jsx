@@ -17,24 +17,25 @@ export default function Home() {
           initial="hidden"
           animate={done ? "show" : "hidden"}
         >
-          <motion.p
-            variants={fadeUp}
-            className="mb-3 font-mono text-xs tracking-[0.2em] text-(--color-text-faint) uppercase"
-          >
-            {profile.name}
-          </motion.p>
           <motion.h1
             variants={fadeUp}
-            className="mb-4 font-serif text-5xl leading-[1.05] text-(--color-text) md:text-6xl"
+            className="mb-3 font-serif text-5xl leading-[1.02] text-(--color-text) sm:text-6xl md:text-7xl"
+          >
+            {profile.name}
+          </motion.h1>
+          <motion.p
+            variants={fadeUp}
+            className="mb-6 font-mono text-xs tracking-[0.18em] text-(--color-text-faint) uppercase sm:text-sm"
           >
             {profile.tagline}
-          </motion.h1>
+          </motion.p>
           <motion.p
             variants={fadeUp}
             className="mb-7 text-base leading-relaxed text-(--color-text-muted)"
           >
-            Incoming Data Science student, UW&ndash;Madison. Founder, NautiClean.
-            Building deployable AI and robotics systems.
+            Incoming Data Science student at UW-Madison. Founder of NautiClean,
+            co-founder of Scoviq and TraffIQ. I build deployable AI and robotics
+            systems.
           </motion.p>
           <motion.div
             variants={fadeUp}

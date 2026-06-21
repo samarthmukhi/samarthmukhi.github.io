@@ -3,7 +3,7 @@ import Section from "../components/Section";
 
 export default function NotFound() {
   return (
-    <Section eyebrow="404" title="Page not found">
+    <Section command="cd /404">
       <p className="mb-6 text-sm text-(--color-text-muted)">
         The page you're looking for doesn't exist.
       </p>

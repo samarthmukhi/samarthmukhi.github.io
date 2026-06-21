@@ -37,15 +37,57 @@ export default function Contact() {
   }
 
   return (
-    <Section eyebrow="Contact" title="Get in touch">
+    <Section command="./contact.sh">
       <p className="mb-8 text-sm leading-relaxed text-(--color-text-muted)">
-        Working on something in AI, robotics, or climate tech? Reach out below,
-        or email directly at{" "}
-        <a href={`mailto:${profile.email}`} className="text-(--color-accent)">
-          {profile.email}
-        </a>
-        .
+        Working on something in AI, robotics, or climate tech? Send a message
+        below, or reach out through the right channel.
       </p>
+
+      <div className="mb-10 grid grid-cols-1 gap-3 sm:grid-cols-3">
+        {profile.emails.map((item) => (
+          <a
+            key={item.value}
+            href={`mailto:${item.value}`}
+            className="glass glass-hover flex flex-col rounded-xl p-4"
+          >
+            <span className="font-mono text-[10px] tracking-wide text-(--color-accent) uppercase">
+              {item.label}
+            </span>
+            <span className="mt-1 text-sm break-all text-(--color-text)">
+              {item.value}
+            </span>
+            <span className="mt-1 text-xs text-(--color-text-faint)">{item.note}</span>
+          </a>
+        ))}
+      </div>
+
+      <div className="mb-10 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-xs text-(--color-text-faint)">
+        <span>{profile.address}</span>
+        <a
+          href={profile.github}
+          target="_blank"
+          rel="noreferrer"
+          className="transition-colors hover:text-(--color-accent)"
+        >
+          GitHub
+        </a>
+        <a
+          href={profile.linkedin}
+          target="_blank"
+          rel="noreferrer"
+          className="transition-colors hover:text-(--color-accent)"
+        >
+          LinkedIn
+        </a>
+        <a
+          href={profile.x}
+          target="_blank"
+          rel="noreferrer"
+          className="transition-colors hover:text-(--color-accent)"
+        >
+          X
+        </a>
+      </div>
 
       <motion.form
         onSubmit={handleSubmit}
@@ -106,7 +148,7 @@ export default function Contact() {
         </motion.button>
 
         {status === "sent" && (
-          <p className="text-sm text-(--color-accent)">Thanks — message sent.</p>
+          <p className="text-sm text-(--color-accent)">Thanks, your message was sent.</p>
         )}
         {status === "error" && (
           <p className="text-sm text-red-400">

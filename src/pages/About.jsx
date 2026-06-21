@@ -11,7 +11,7 @@ import { fadeUp, staggerContainer, cardHover, inView } from "../lib/motion";
 
 export default function About() {
   return (
-    <Section eyebrow="About" title="About me">
+    <Section command="whoami">
       <motion.p
         variants={fadeUp}
         initial="hidden"

@@ -90,16 +90,24 @@ export default function Layout() {
       </main>
 
       <footer className="glass-nav mt-8 px-6 py-8">
-        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 font-mono text-xs text-(--color-text-faint) md:flex-row">
+        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 font-mono text-xs text-(--color-text-faint) md:flex-row">
           <span>
             &copy; {new Date().getFullYear()} {profile.name}
           </span>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
             <a
               href={`mailto:${profile.email}`}
               className="transition-colors hover:text-(--color-accent)"
             >
-              {profile.email}
+              Email
+            </a>
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-(--color-accent)"
+            >
+              GitHub
             </a>
             <a
               href={profile.linkedin}
@@ -108,6 +116,14 @@ export default function Layout() {
               className="transition-colors hover:text-(--color-accent)"
             >
               LinkedIn
+            </a>
+            <a
+              href={profile.x}
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-(--color-accent)"
+            >
+              X
             </a>
           </div>
         </div>

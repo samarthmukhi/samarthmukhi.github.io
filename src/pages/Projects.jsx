@@ -5,7 +5,7 @@ import { fadeUp, staggerContainer, cardHover, inView } from "../lib/motion";
 
 export default function Projects() {
   return (
-    <Section eyebrow="Projects" title="Projects">
+    <Section command="ls ~/projects">
       <motion.div
         className="space-y-8"
         variants={staggerContainer}
@@ -20,24 +20,12 @@ export default function Projects() {
             whileHover={cardHover}
             className="glass glass-hover rounded-xl p-6"
           >
-            <div className="mb-2 flex items-baseline justify-between gap-4">
-              <h2 className="text-lg text-(--color-text)">{project.name}</h2>
-              {project.link && (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-xs text-(--color-accent)"
-                >
-                  Visit site &rarr;
-                </a>
-              )}
-            </div>
+            <h2 className="mb-2 text-lg text-(--color-text)">{project.name}</h2>
             <p className="mb-3 text-sm text-(--color-text-muted)">{project.tagline}</p>
             <p className="mb-4 text-sm leading-relaxed text-(--color-text-muted)">
               {project.description}
             </p>
-            <div className="flex flex-wrap gap-2">
+            <div className="mb-4 flex flex-wrap gap-2">
               {project.tech.map((tag) => (
                 <span
                   key={tag}
@@ -47,6 +35,21 @@ export default function Projects() {
                 </span>
               ))}
             </div>
+            {project.links && (
+              <div className="flex flex-wrap gap-3">
+                {project.links.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-mono text-xs text-(--color-accent) transition-colors hover:text-(--color-text)"
+                  >
+                    {link.label} &rarr;
+                  </a>
+                ))}
+              </div>
+            )}
           </motion.article>
         ))}
       </motion.div>

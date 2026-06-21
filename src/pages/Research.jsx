@@ -5,7 +5,7 @@ import { fadeUp, staggerContainer, cardHover, inView } from "../lib/motion";
 
 export default function Research() {
   return (
-    <Section eyebrow="Research" title="Research">
+    <Section command="cat research.md">
       <motion.article
         variants={fadeUp}
         initial="hidden"
@@ -21,7 +21,18 @@ export default function Research() {
           {research.description}
         </p>
 
-        <h3 className="mb-3 font-mono text-xs tracking-[0.15em] text-(--color-text-faint) uppercase">
+        {research.paperUrl && (
+          <a
+            href={research.paperUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="mb-6 inline-flex items-center gap-2 font-mono text-xs text-(--color-accent) transition-colors hover:text-(--color-text)"
+          >
+            Read the paper (PDF) &rarr;
+          </a>
+        )}
+
+        <h3 className="mt-6 mb-3 font-mono text-xs tracking-[0.15em] text-(--color-text-faint) uppercase">
           Focus areas
         </h3>
         <motion.ul
