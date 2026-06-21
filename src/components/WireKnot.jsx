@@ -6,14 +6,7 @@ import { useTheme } from "../lib/theme";
 function Knot({ theme }) {
   const ref = useRef(null);
 
-  const color = useMemo(() => {
-    if (typeof window === "undefined") return "#f2f2f0";
-    return (
-      getComputedStyle(document.documentElement)
-        .getPropertyValue("--knot-color")
-        .trim() || "#f2f2f0"
-    );
-  }, [theme]);
+  const color = theme === "light" ? "#1b1c20" : "#f2f2f0";
 
   const edges = useMemo(() => {
     const geo = new THREE.TorusKnotGeometry(0.9, 0.26, 160, 20, 2, 3);

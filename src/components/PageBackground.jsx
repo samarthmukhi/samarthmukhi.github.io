@@ -47,7 +47,13 @@ export default function PageBackground() {
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
     >
-      <ParticleField key={theme} density={6500} mobileDensity={11000} maxAlpha={0.6} />
+      <ParticleField
+        key={theme}
+        rgb={theme === "light" ? "28, 29, 33" : "242, 242, 240"}
+        density={6500}
+        mobileDensity={11000}
+        maxAlpha={0.6}
+      />
       <div
         ref={glowRef}
         className="absolute top-0 left-0 h-[40rem] w-[40rem] rounded-full"

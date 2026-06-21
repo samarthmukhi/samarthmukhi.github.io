@@ -1,6 +1,11 @@
 import { useEffect, useRef } from "react";
 
-export default function ParticleField({ density = 4000, mobileDensity = 7000, maxAlpha = 0.8 }) {
+export default function ParticleField({
+  density = 4000,
+  mobileDensity = 7000,
+  maxAlpha = 0.8,
+  rgb = "242, 242, 240",
+}) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -9,10 +14,6 @@ export default function ParticleField({ density = 4000, mobileDensity = 7000, ma
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    const rgb =
-      getComputedStyle(document.documentElement)
-        .getPropertyValue("--particle-rgb")
-        .trim() || "242,242,240";
 
     let w = 0;
     let h = 0;
@@ -98,7 +99,7 @@ export default function ParticleField({ density = 4000, mobileDensity = 7000, ma
       window.removeEventListener("mouseleave", onLeave);
       if (frameId) cancelAnimationFrame(frameId);
     };
-  }, [density, mobileDensity, maxAlpha]);
+  }, [density, mobileDensity, maxAlpha, rgb]);
 
   return (
     <canvas
