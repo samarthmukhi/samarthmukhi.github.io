@@ -1,10 +1,19 @@
+import { motion } from "framer-motion";
 import Section from "../components/Section";
 import { research } from "../data/content";
+import { fadeUp, staggerContainer, cardHover, inView } from "../lib/motion";
 
 export default function Research() {
   return (
     <Section eyebrow="Research" title="Research">
-      <article className="glass rounded-xl p-6">
+      <motion.article
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={inView}
+        whileHover={cardHover}
+        className="glass glass-hover rounded-xl p-6"
+      >
         <h2 className="mb-2 text-lg leading-snug text-(--color-text)">{research.title}</h2>
         <p className="mb-1 text-sm text-(--color-accent)">{research.journal}</p>
         <p className="mb-4 text-xs text-(--color-text-faint)">{research.mentor}</p>
@@ -15,17 +24,24 @@ export default function Research() {
         <h3 className="mb-3 font-mono text-xs tracking-[0.15em] text-(--color-text-faint) uppercase">
           Focus areas
         </h3>
-        <ul className="flex flex-wrap gap-2">
+        <motion.ul
+          className="flex flex-wrap gap-2"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={inView}
+        >
           {research.focusAreas.map((area) => (
-            <li
+            <motion.li
               key={area}
+              variants={fadeUp}
               className="glass glass-hover rounded-md px-3 py-1 text-xs text-(--color-text-muted)"
             >
               {area}
-            </li>
+            </motion.li>
           ))}
-        </ul>
-      </article>
+        </motion.ul>
+      </motion.article>
     </Section>
   );
 }

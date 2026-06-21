@@ -1,16 +1,26 @@
+import { motion } from "framer-motion";
 import Section from "../components/Section";
 import { experience } from "../data/content";
+import { fadeUp, staggerContainer, cardHover, inView } from "../lib/motion";
 
 export default function Experience() {
   return (
     <Section eyebrow="Experience" title="Experience">
-      <ol className="space-y-6">
+      <motion.ol
+        className="space-y-6"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={inView}
+      >
         {experience.map((item) => (
-          <li
+          <motion.li
             key={`${item.org}-${item.period}`}
+            variants={fadeUp}
+            whileHover={cardHover}
             className="glass glass-hover rounded-xl p-6"
           >
-            <p className="text-xs text-(--color-text-faint)">{item.period}</p>
+            <p className="font-mono text-xs text-(--color-text-faint)">{item.period}</p>
             <p className="mt-1 text-base text-(--color-text)">
               {item.role} &middot;{" "}
               {item.link ? (
@@ -30,9 +40,9 @@ export default function Experience() {
             <p className="mt-3 text-sm leading-relaxed text-(--color-text-muted)">
               {item.description}
             </p>
-          </li>
+          </motion.li>
         ))}
-      </ol>
+      </motion.ol>
     </Section>
   );
 }

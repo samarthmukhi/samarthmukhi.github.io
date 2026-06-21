@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Section from "../components/Section";
 import { profile } from "../data/content";
+import { fadeUp, inView } from "../lib/motion";
 
 // TODO: replace YOUR_FORM_ID with your real Formspree form ID
 // 1. Create a free account at https://formspree.io
@@ -45,7 +47,14 @@ export default function Contact() {
         .
       </p>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <motion.form
+        onSubmit={handleSubmit}
+        className="space-y-4"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={inView}
+      >
         <div>
           <label htmlFor="name" className="mb-1 block text-xs text-(--color-text-faint)">
             Name
@@ -85,13 +94,16 @@ export default function Contact() {
           />
         </div>
 
-        <button
+        <motion.button
           type="submit"
           disabled={status === "sending"}
+          whileHover={{ y: -2 }}
+          whileTap={{ scale: 0.97 }}
+          transition={{ type: "spring", stiffness: 320, damping: 22 }}
           className="glass glass-hover rounded-lg px-5 py-2 text-sm text-(--color-text) disabled:opacity-50"
         >
           {status === "sending" ? "Sending..." : "Send message"}
-        </button>
+        </motion.button>
 
         {status === "sent" && (
           <p className="text-sm text-(--color-accent)">Thanks — message sent.</p>
@@ -101,7 +113,7 @@ export default function Contact() {
             Something went wrong. Try emailing directly instead.
           </p>
         )}
-      </form>
+      </motion.form>
     </Section>
   );
 }

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Section from "../components/Section";
 import {
   profile,
@@ -6,29 +7,44 @@ import {
   skills,
   certifications,
 } from "../data/content";
+import { fadeUp, staggerContainer, cardHover, inView } from "../lib/motion";
 
 export default function About() {
   return (
     <Section eyebrow="About" title="About me">
-      <p className="mb-10 text-sm leading-relaxed text-(--color-text-muted)">
+      <motion.p
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={inView}
+        className="mb-10 text-base leading-relaxed text-(--color-text-muted)"
+      >
         {profile.summary}
-      </p>
+      </motion.p>
 
       <h2 className="mb-4 font-mono text-xs tracking-[0.15em] text-(--color-text-faint) uppercase">
         Education
       </h2>
-      <ul className="mb-10 space-y-3">
+      <motion.ul
+        className="mb-10 space-y-3"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={inView}
+      >
         {education.map((item) => (
-          <li
+          <motion.li
             key={item.school}
+            variants={fadeUp}
+            whileHover={cardHover}
             className="glass glass-hover rounded-xl px-4 py-3"
           >
             <p className="text-sm text-(--color-text)">{item.school}</p>
             <p className="text-sm text-(--color-text-muted)">{item.detail}</p>
             <p className="text-xs text-(--color-text-faint)">{item.period}</p>
-          </li>
+          </motion.li>
         ))}
-      </ul>
+      </motion.ul>
 
       <h2 className="mb-4 font-mono text-xs tracking-[0.15em] text-(--color-text-faint) uppercase">
         Academic achievements
@@ -44,30 +60,45 @@ export default function About() {
       <h2 className="mb-4 font-mono text-xs tracking-[0.15em] text-(--color-text-faint) uppercase">
         Toolkit
       </h2>
-      <div className="mb-10 flex flex-wrap gap-2">
+      <motion.div
+        className="mb-10 flex flex-wrap gap-2"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={inView}
+      >
         {skills.map((skill) => (
-          <span
+          <motion.span
             key={skill}
+            variants={fadeUp}
             className="glass glass-hover rounded-md px-3 py-1 text-xs text-(--color-text-muted)"
           >
             {skill}
-          </span>
+          </motion.span>
         ))}
-      </div>
+      </motion.div>
 
       <h2 className="mb-4 font-mono text-xs tracking-[0.15em] text-(--color-text-faint) uppercase">
         Certifications
       </h2>
-      <ul className="space-y-2">
+      <motion.ul
+        className="space-y-2"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={inView}
+      >
         {certifications.map((cert) => (
-          <li
+          <motion.li
             key={cert}
+            variants={fadeUp}
+            whileHover={cardHover}
             className="glass glass-hover rounded-lg px-4 py-2 text-sm text-(--color-text-muted)"
           >
             {cert}
-          </li>
+          </motion.li>
         ))}
-      </ul>
+      </motion.ul>
     </Section>
   );
 }

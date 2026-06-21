@@ -1,5 +1,6 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, useOutlet, useLocation } from "react-router-dom";
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { navLinks, profile } from "../data/content";
 import CustomCursor from "./CustomCursor";
 import PageBackground from "./PageBackground";
@@ -7,6 +8,8 @@ import Spotlight from "./Spotlight";
 
 export default function Layout() {
   const [open, setOpen] = useState(false);
+  const outlet = useOutlet();
+  const location = useLocation();
 
   return (
     <div className="relative min-h-screen text-(--color-text)">
@@ -73,7 +76,17 @@ export default function Layout() {
       </header>
 
       <main className="relative">
-        <Outlet />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {outlet}
+          </motion.div>
+        </AnimatePresence>
       </main>
 
       <footer className="glass-nav mt-8 px-6 py-8">

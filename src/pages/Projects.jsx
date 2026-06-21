@@ -1,13 +1,23 @@
+import { motion } from "framer-motion";
 import Section from "../components/Section";
 import { projects } from "../data/content";
+import { fadeUp, staggerContainer, cardHover, inView } from "../lib/motion";
 
 export default function Projects() {
   return (
     <Section eyebrow="Projects" title="Projects">
-      <div className="space-y-8">
+      <motion.div
+        className="space-y-8"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={inView}
+      >
         {projects.map((project) => (
-          <article
+          <motion.article
             key={project.name}
+            variants={fadeUp}
+            whileHover={cardHover}
             className="glass glass-hover rounded-xl p-6"
           >
             <div className="mb-2 flex items-baseline justify-between gap-4">
@@ -37,9 +47,9 @@ export default function Projects() {
                 </span>
               ))}
             </div>
-          </article>
+          </motion.article>
         ))}
-      </div>
+      </motion.div>
     </Section>
   );
 }
