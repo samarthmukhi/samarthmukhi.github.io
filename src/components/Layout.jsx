@@ -9,7 +9,7 @@ export default function Layout() {
   return (
     <div className="min-h-screen bg-(--color-bg) text-(--color-text)">
       <CustomCursor />
-      <header className="sticky top-0 z-50 border-b border-(--color-border) bg-(--color-bg)/90 backdrop-blur">
+      <header className="glass-nav sticky top-0 z-50">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
           <NavLink to="/" className="text-sm tracking-wide text-(--color-text)">
             {profile.name}

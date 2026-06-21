@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-export default function ParticleField() {
+export default function ParticleField({ density = 4000, mobileDensity = 7000, maxAlpha = 0.8 }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -26,8 +26,8 @@ export default function ParticleField() {
       h = canvas.parentElement.clientHeight;
       canvas.width = w;
       canvas.height = h;
-      const density = window.innerWidth < 768 ? 7000 : 4000;
-      const count = Math.floor((w * h) / density);
+      const effectiveDensity = window.innerWidth < 768 ? mobileDensity : density;
+      const count = Math.floor((w * h) / effectiveDensity);
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
@@ -56,17 +56,17 @@ export default function ParticleField() {
       curX += (targetX - curX) * 0.05;
       curY += (targetY - curY) * 0.05;
       ctx.clearRect(0, 0, w, h);
+      const rect = canvas.getBoundingClientRect();
       for (const p of particles) {
         const px = p.x - curX * 16 * p.depth;
         const py = p.y - curY * 16 * p.depth;
-        const rect = canvas.getBoundingClientRect();
         const localMouseX = mouseX - rect.left;
         const localMouseY = mouseY - rect.top;
         const nearMouse = Math.hypot(px - localMouseX, py - localMouseY);
         const glow = nearMouse < 70 ? (1 - nearMouse / 70) * 0.5 : 0;
         ctx.beginPath();
         ctx.arc(px, py, p.r + glow, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(242,242,240,${Math.min(0.8, p.baseAlpha + glow)})`;
+        ctx.fillStyle = `rgba(242,242,240,${Math.min(maxAlpha, p.baseAlpha + glow)})`;
         ctx.fill();
       }
     };
@@ -94,7 +94,7 @@ export default function ParticleField() {
       window.removeEventListener("mouseleave", onLeave);
       if (frameId) cancelAnimationFrame(frameId);
     };
-  }, []);
+  }, [density, mobileDensity, maxAlpha]);
 
   return (
     <canvas

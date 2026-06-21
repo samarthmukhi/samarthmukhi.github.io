@@ -17,9 +17,12 @@ export default function About() {
       <h2 className="mb-4 text-sm tracking-wide text-(--color-text-faint) uppercase">
         Education
       </h2>
-      <ul className="mb-10 space-y-5">
+      <ul className="mb-10 space-y-3">
         {education.map((item) => (
-          <li key={item.school} className="border-l border-(--color-border) pl-4">
+          <li
+            key={item.school}
+            className="glass glass-hover rounded-xl px-4 py-3"
+          >
             <p className="text-sm text-(--color-text)">{item.school}</p>
             <p className="text-sm text-(--color-text-muted)">{item.detail}</p>
             <p className="text-xs text-(--color-text-faint)">{item.period}</p>
@@ -45,7 +48,7 @@ export default function About() {
         {skills.map((skill) => (
           <span
             key={skill}
-            className="rounded-md border border-(--color-border) bg-(--color-bg-raised) px-3 py-1 text-xs text-(--color-text-muted)"
+            className="glass glass-hover rounded-md px-3 py-1 text-xs text-(--color-text-muted)"
           >
             {skill}
           </span>
@@ -57,7 +60,10 @@ export default function About() {
       </h2>
       <ul className="space-y-2">
         {certifications.map((cert) => (
-          <li key={cert} className="text-sm text-(--color-text-muted)">
+          <li
+            key={cert}
+            className="glass glass-hover rounded-lg px-4 py-2 text-sm text-(--color-text-muted)"
+          >
             {cert}
           </li>
         ))}

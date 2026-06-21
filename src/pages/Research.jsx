@@ -4,7 +4,7 @@ import { research } from "../data/content";
 export default function Research() {
   return (
     <Section eyebrow="Research" title="Research">
-      <article className="rounded-lg border border-(--color-border) bg-(--color-bg-raised) p-6">
+      <article className="glass rounded-xl p-6">
         <h2 className="mb-2 text-lg leading-snug text-(--color-text)">{research.title}</h2>
         <p className="mb-1 text-sm text-(--color-accent)">{research.journal}</p>
         <p className="mb-4 text-xs text-(--color-text-faint)">{research.mentor}</p>
@@ -19,7 +19,7 @@ export default function Research() {
           {research.focusAreas.map((area) => (
             <li
               key={area}
-              className="rounded-md border border-(--color-border) px-3 py-1 text-xs text-(--color-text-muted)"
+              className="glass glass-hover rounded-md px-3 py-1 text-xs text-(--color-text-muted)"
             >
               {area}
             </li>

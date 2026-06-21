@@ -8,7 +8,7 @@ export default function Projects() {
         {projects.map((project) => (
           <article
             key={project.name}
-            className="rounded-lg border border-(--color-border) bg-(--color-bg-raised) p-6"
+            className="glass glass-hover rounded-xl p-6"
           >
             <div className="mb-2 flex items-baseline justify-between gap-4">
               <h2 className="text-lg text-(--color-text)">{project.name}</h2>
@@ -31,7 +31,7 @@ export default function Projects() {
               {project.tech.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-md border border-(--color-border) px-2 py-1 text-xs text-(--color-text-faint)"
+                  className="glass rounded-md px-2 py-1 text-xs text-(--color-text-faint)"
                 >
                   {tag}
                 </span>

@@ -4,9 +4,12 @@ import { experience } from "../data/content";
 export default function Experience() {
   return (
     <Section eyebrow="Experience" title="Experience">
-      <ol className="space-y-10">
+      <ol className="space-y-6">
         {experience.map((item) => (
-          <li key={`${item.org}-${item.period}`} className="border-l border-(--color-border) pl-4">
+          <li
+            key={`${item.org}-${item.period}`}
+            className="glass glass-hover rounded-xl p-6"
+          >
             <p className="text-xs text-(--color-text-faint)">{item.period}</p>
             <p className="mt-1 text-base text-(--color-text)">
               {item.role} &middot;{" "}

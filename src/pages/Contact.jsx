@@ -55,7 +55,7 @@ export default function Contact() {
             name="name"
             type="text"
             required
-            className="w-full rounded-md border border-(--color-border) bg-(--color-bg-raised) px-3 py-2 text-sm text-(--color-text) outline-none focus:border-(--color-accent)"
+            className="glass-input w-full rounded-lg px-3 py-2 text-sm text-(--color-text) outline-none transition-colors"
           />
         </div>
 
@@ -68,7 +68,7 @@ export default function Contact() {
             name="email"
             type="email"
             required
-            className="w-full rounded-md border border-(--color-border) bg-(--color-bg-raised) px-3 py-2 text-sm text-(--color-text) outline-none focus:border-(--color-accent)"
+            className="glass-input w-full rounded-lg px-3 py-2 text-sm text-(--color-text) outline-none transition-colors"
           />
         </div>
 
@@ -81,14 +81,14 @@ export default function Contact() {
             name="message"
             rows={5}
             required
-            className="w-full rounded-md border border-(--color-border) bg-(--color-bg-raised) px-3 py-2 text-sm text-(--color-text) outline-none focus:border-(--color-accent)"
+            className="glass-input w-full rounded-lg px-3 py-2 text-sm text-(--color-text) outline-none transition-colors"
           />
         </div>
 
         <button
           type="submit"
           disabled={status === "sending"}
-          className="rounded-md border border-(--color-border) bg-(--color-bg-raised) px-5 py-2 text-sm text-(--color-text) disabled:opacity-50"
+          className="glass glass-hover rounded-lg px-5 py-2 text-sm text-(--color-text) disabled:opacity-50"
         >
           {status === "sending" ? "Sending..." : "Send message"}
         </button>
