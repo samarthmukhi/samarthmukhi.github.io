@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import WireKnot from "../components/WireKnot";
+import NeuralNet from "../components/NeuralNet";
 import { profile } from "../data/content";
 import { fadeUp, staggerContainer } from "../lib/motion";
 import { useIntro } from "../lib/introContext";
@@ -10,16 +10,16 @@ export default function Home() {
 
   return (
     <section className="relative">
-      <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-10 px-6 py-24 md:min-h-[72vh] md:flex-row md:py-32">
+      <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-10 px-6 py-20 sm:py-24 lg:min-h-[72vh] lg:flex-row lg:py-32">
         <motion.div
-          className="max-w-md text-center md:text-left"
+          className="max-w-md text-center lg:text-left"
           variants={staggerContainer}
           initial="hidden"
           animate={done ? "show" : "hidden"}
         >
           <motion.h1
             variants={fadeUp}
-            className="mb-3 font-serif text-5xl leading-[1.02] text-(--color-text) sm:text-6xl md:text-7xl"
+            className="mb-3 font-serif text-5xl leading-[1.02] text-(--color-text) sm:text-6xl lg:text-7xl"
           >
             {profile.name}
           </motion.h1>
@@ -39,7 +39,7 @@ export default function Home() {
           </motion.p>
           <motion.div
             variants={fadeUp}
-            className="flex items-center justify-center gap-4 md:justify-start"
+            className="flex items-center justify-center gap-4 lg:justify-start"
           >
             <Link
               to="/projects"
@@ -63,12 +63,12 @@ export default function Home() {
         </motion.div>
 
         <motion.div
-          className="flex flex-1 justify-center"
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={done ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.85 }}
+          className="flex w-full justify-center lg:flex-1"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={done ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
         >
-          <WireKnot className="h-64 w-64 md:h-80 md:w-80" />
+          <NeuralNet className="mx-auto h-72 w-full max-w-sm sm:h-80 lg:h-96" />
         </motion.div>
       </div>
     </section>
