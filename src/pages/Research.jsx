@@ -12,7 +12,7 @@ export default function Research() {
           {research.description}
         </p>
 
-        <h3 className="mb-3 text-xs tracking-wide text-(--color-text-faint) uppercase">
+        <h3 className="mb-3 font-mono text-xs tracking-[0.15em] text-(--color-text-faint) uppercase">
           Focus areas
         </h3>
         <ul className="flex flex-wrap gap-2">

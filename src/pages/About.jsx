@@ -14,7 +14,7 @@ export default function About() {
         {profile.summary}
       </p>
 
-      <h2 className="mb-4 text-sm tracking-wide text-(--color-text-faint) uppercase">
+      <h2 className="mb-4 font-mono text-xs tracking-[0.15em] text-(--color-text-faint) uppercase">
         Education
       </h2>
       <ul className="mb-10 space-y-3">
@@ -30,7 +30,7 @@ export default function About() {
         ))}
       </ul>
 
-      <h2 className="mb-4 text-sm tracking-wide text-(--color-text-faint) uppercase">
+      <h2 className="mb-4 font-mono text-xs tracking-[0.15em] text-(--color-text-faint) uppercase">
         Academic achievements
       </h2>
       <ul className="mb-10 space-y-2">
@@ -41,7 +41,7 @@ export default function About() {
         ))}
       </ul>
 
-      <h2 className="mb-4 text-sm tracking-wide text-(--color-text-faint) uppercase">
+      <h2 className="mb-4 font-mono text-xs tracking-[0.15em] text-(--color-text-faint) uppercase">
         Toolkit
       </h2>
       <div className="mb-10 flex flex-wrap gap-2">
@@ -55,7 +55,7 @@ export default function About() {
         ))}
       </div>
 
-      <h2 className="mb-4 text-sm tracking-wide text-(--color-text-faint) uppercase">
+      <h2 className="mb-4 font-mono text-xs tracking-[0.15em] text-(--color-text-faint) uppercase">
         Certifications
       </h2>
       <ul className="space-y-2">
