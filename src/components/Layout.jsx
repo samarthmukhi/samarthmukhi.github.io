@@ -6,6 +6,7 @@ import CustomCursor from "./CustomCursor";
 import PageBackground from "./PageBackground";
 import Spotlight from "./Spotlight";
 import ThemeToggle from "./ThemeToggle";
+import HamburgerButton from "./HamburgerButton";
 
 export default function Layout() {
   const [open, setOpen] = useState(false);
@@ -27,8 +28,8 @@ export default function Layout() {
             {profile.name}
           </NavLink>
 
-          <div className="flex items-center gap-4 md:gap-5">
-            <nav className="hidden gap-5 md:flex lg:gap-7">
+          <div className="flex items-center gap-5">
+            <nav className="hidden gap-6 lg:flex">
               {navLinks.map((link) => (
                 <NavLink
                   key={link.to}
@@ -48,36 +49,50 @@ export default function Layout() {
             </nav>
 
             <ThemeToggle />
-
-            <button
-              aria-label="Toggle menu"
-              onClick={() => setOpen((o) => !o)}
-              className="font-mono text-xs uppercase text-(--color-text) md:hidden"
-            >
-              {open ? "Close" : "Menu"}
-            </button>
+            <HamburgerButton open={open} onClick={() => setOpen((o) => !o)} />
           </div>
         </div>
 
-        {open && (
-          <nav className="flex flex-col gap-4 border-t border-white/8 px-6 py-4 md:hidden">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                end={link.to === "/"}
-                onClick={() => setOpen(false)}
-                className={({ isActive }) =>
-                  `font-mono text-xs uppercase tracking-wide ${
-                    isActive ? "text-(--color-accent)" : "text-(--color-text-muted)"
-                  }`
-                }
-              >
-                {link.label}
-              </NavLink>
-            ))}
-          </nav>
-        )}
+        <AnimatePresence>
+          {open && (
+            <motion.nav
+              key="mobile-nav"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+              className="glass-nav absolute inset-x-0 top-full flex flex-col gap-1 px-6 py-4 lg:hidden"
+            >
+              {navLinks.map((link, i) => (
+                <motion.div
+                  key={link.to}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{
+                    delay: 0.05 + i * 0.04,
+                    duration: 0.25,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                >
+                  <NavLink
+                    to={link.to}
+                    end={link.to === "/"}
+                    onClick={() => setOpen(false)}
+                    className={({ isActive }) =>
+                      `block py-1 font-mono text-sm uppercase tracking-wide ${
+                        isActive
+                          ? "text-(--color-accent)"
+                          : "text-(--color-text-muted)"
+                      }`
+                    }
+                  >
+                    {link.label}
+                  </NavLink>
+                </motion.div>
+              ))}
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </header>
 
       <main className="relative">

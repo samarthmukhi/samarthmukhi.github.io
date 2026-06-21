@@ -4,11 +4,7 @@ import Section from "../components/Section";
 import { profile } from "../data/content";
 import { fadeUp, inView } from "../lib/motion";
 
-// TODO: replace YOUR_FORM_ID with your real Formspree form ID
-// 1. Create a free account at https://formspree.io
-// 2. Create a new form, copy its endpoint ID
-// 3. Paste it below
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mykqgpky";
 
 export default function Contact() {
   const [status, setStatus] = useState("idle");

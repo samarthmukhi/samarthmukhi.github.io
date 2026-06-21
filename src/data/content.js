@@ -8,7 +8,7 @@ export const profile = {
   name: "Samarth Mukhi",
   tagline: "Data science & autonomous systems builder",
   summary:
-    "I build systems that work in the real world, using data, robotics, and optimization. I care more about solutions that can actually be deployed than models that only run in a notebook. I'm an incoming Data Science student at the University of Wisconsin-Madison and the founder of NautiClean, a semi-autonomous marine cleanup system. My work spans GPS-guided navigation, particle swarm optimization for path planning, and computer vision for adaptive traffic control.",
+    "I build systems that work in the real world, using data, robotics, and optimization. I care more about solutions that can actually be deployed than models that only run in a notebook. I'm a Data Science student at the University of Wisconsin-Madison and the founder of NautiClean, a semi-autonomous marine cleanup system. My work spans GPS-guided navigation, particle swarm optimization for path planning, and computer vision for adaptive traffic control.",
   location: "Madison, Wisconsin",
   address: "420 N Park St, Madison, Wisconsin 53706",
   email: "samarth.mukhi@gmail.com",
@@ -100,6 +100,7 @@ export const experience = [
     description:
       "Co-founding a new venture in Madison, building on the systems and optimization work behind NautiClean and TraffIQ.",
     links: [
+      { label: "Website", href: "https://scoviq.com" },
       { label: "Instagram", href: "https://www.instagram.com/scoviqhq/" },
       { label: "X", href: "https://x.com/scoviqhq" },
     ],

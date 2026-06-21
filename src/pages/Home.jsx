@@ -33,7 +33,7 @@ export default function Home() {
             variants={fadeUp}
             className="mb-7 text-base leading-relaxed text-(--color-text-muted)"
           >
-            Incoming Data Science student at UW-Madison. Founder of NautiClean,
+            Data Science student at UW-Madison. Founder of NautiClean,
             co-founder of Scoviq and TraffIQ. I build deployable AI and robotics
             systems.
           </motion.p>
