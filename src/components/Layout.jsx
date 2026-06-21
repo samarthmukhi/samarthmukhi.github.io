@@ -1,5 +1,5 @@
 import { NavLink, useOutlet, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { navLinks, profile } from "../data/content";
 import CustomCursor from "./CustomCursor";
@@ -8,10 +8,26 @@ import Spotlight from "./Spotlight";
 import ThemeToggle from "./ThemeToggle";
 import HamburgerButton from "./HamburgerButton";
 
+// Tab title per route: the home page stays descriptive for sharing/SEO,
+// inner pages echo their terminal command.
+const HOME_TITLE = "Samarth Mukhi // Data Science & Autonomous Systems";
+const pageTitles = {
+  "/about": "samarth@uw:~$ whoami",
+  "/experience": "samarth@uw:~$ cat experience.log",
+  "/projects": "samarth@uw:~$ ls ~/projects",
+  "/research": "samarth@uw:~$ cat research.md",
+  "/awards": "samarth@uw:~$ git log --honors",
+  "/contact": "samarth@uw:~$ ./contact.sh",
+};
+
 export default function Layout() {
   const [open, setOpen] = useState(false);
   const outlet = useOutlet();
   const location = useLocation();
+
+  useEffect(() => {
+    document.title = pageTitles[location.pathname] || HOME_TITLE;
+  }, [location.pathname]);
 
   return (
     <div className="relative min-h-screen text-(--color-text)">
