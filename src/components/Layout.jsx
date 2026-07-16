@@ -10,7 +10,7 @@ import HamburgerButton from "./HamburgerButton";
 
 // Tab title per route: the home page stays descriptive for sharing/SEO,
 // inner pages echo their terminal command.
-const HOME_TITLE = "Samarth Mukhi // Data Science & Autonomous Systems";
+const HOME_TITLE = "Samarth Mukhi // Computer Science & Autonomous Systems";
 const pageTitles = {
   "/about": "samarth@uw:~$ whoami",
   "/experience": "samarth@uw:~$ cat experience.log",

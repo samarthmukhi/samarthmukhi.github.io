@@ -6,9 +6,9 @@ export const socials = {
 
 export const profile = {
   name: "Samarth Mukhi",
-  tagline: "Data science & autonomous systems builder",
+  tagline: "Computer science & autonomous systems builder",
   summary:
-    "I build systems that work in the real world, using data, robotics, and optimization. I care more about solutions that can actually be deployed than models that only run in a notebook. I'm a Data Science student at the University of Wisconsin-Madison and the founder of NautiClean, a semi-autonomous marine cleanup system. My work spans GPS-guided navigation, particle swarm optimization for path planning, and computer vision for adaptive traffic control.",
+    "I build systems that work in the real world, using data, robotics, and optimization. I care more about solutions that can actually be deployed than models that only run in a notebook. I'm a Computer Science student at the University of Wisconsin-Madison and the founder of NautiClean, a semi-autonomous marine cleanup system. My work spans GPS-guided navigation, particle swarm optimization for path planning, and computer vision for adaptive traffic control.",
   location: "Madison, Wisconsin",
   address: "420 N Park St, Madison, Wisconsin 53706",
   email: "samarth.mukhi@gmail.com",
@@ -42,7 +42,7 @@ export const profile = {
 export const education = [
   {
     school: "University of Wisconsin-Madison",
-    detail: "Bachelor of Science, Data Science",
+    detail: "Bachelor of Science, Computer Science",
     period: "September 2026 to May 2030",
   },
   {
@@ -144,6 +144,17 @@ export const experience = [
 ];
 
 export const projects = [
+  {
+    name: "OptionsForge",
+    tagline: "Live Black-Scholes & Monte Carlo option pricing",
+    description:
+      "A web app that prices European stock options in real time from live market data: enter any public ticker and it estimates volatility, then prices the option two independent ways — a Monte Carlo simulation and the closed-form Black-Scholes formula — with a convergence chart showing the simulation settle onto the exact price as the number of paths grows. The pricing engine models stock prices with geometric Brownian motion and cross-validates both methods, which agree to within a fraction of a percent.",
+    tech: ["Python", "NumPy", "SciPy", "Streamlit", "yfinance", "Matplotlib"],
+    links: [
+      { label: "Live App", href: "https://optionsforge.streamlit.app" },
+      { label: "GitHub", href: "https://github.com/samarthmukhi/OptionsForge" },
+    ],
+  },
   {
     name: "NautiClean",
     tagline: "Semi-autonomous marine trash collection system",
