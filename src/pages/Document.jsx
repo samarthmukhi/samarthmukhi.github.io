@@ -11,7 +11,6 @@ import {
   education,
   academicAchievements,
   skills,
-  certifications,
   experience,
   projects,
   research,
@@ -139,9 +138,14 @@ export default function Document() {
             </span>
             <span>{p.year}</span>
           </div>
-          <div className="u muted">{p.tagline}</div>
-          <p>{p.description}</p>
-          <div className="u muted">Stack: {p.tech.join(" · ")}</div>
+          <Blank />
+          <p>{p.tagline}</p>
+          {p.highlights.map((h) => (
+            <div key={h} className="pt muted">
+              {h}
+            </div>
+          ))}
+          <div className="u muted">{p.tech.join(" · ")}</div>
           {p.links && (
             <div className="links u">
               {p.links.map((l) => (
@@ -151,6 +155,7 @@ export default function Document() {
               ))}
             </div>
           )}
+          <Blank />
           <Blank />
           {p.name === "SwarmFolio Referee" && (
             <>
@@ -204,11 +209,8 @@ export default function Document() {
       </div>
       <p className="u">{research.title}</p>
       <div className="u muted">{research.journal}</div>
-      <div className="muted">{research.mentor}</div>
       <Blank />
       <p>{research.description}</p>
-      <Blank />
-      <div className="u">Focus: {research.focusAreas.join(" · ")}</div>
       {research.paperUrl && (
         <div className="u">
           <a href={research.paperUrl}>Read the paper →</a>
@@ -241,20 +243,6 @@ export default function Document() {
       <div className="u">Toolkit</div>
       <p className="muted">{skills.join(" · ")}</p>
       <Blank />
-      <div className="u">Certifications</div>
-      {certifications.map((c) => (
-        <div key={c} className="muted">
-          {c}
-        </div>
-      ))}
-      <Blank />
-      <div className="u">Interests</div>
-      {profile.interests.map((c) => (
-        <div key={c} className="muted">
-          {c}
-        </div>
-      ))}
-      <Blank />
       <Rule />
       <Blank />
 
@@ -268,9 +256,9 @@ export default function Document() {
             <span>{a.tag}</span>
           </div>
           <div className="muted">{a.org}</div>
+          <Blank />
         </div>
       ))}
-      <Blank />
       <Rule />
       <Blank />
 

@@ -365,3 +365,13 @@ a:hover {
     animation: none;
   }
 }
+
+/* highlight bullets with a hanging dash */
+.pt {
+  padding-left: 2ch;
+  text-indent: -2ch;
+}
+
+.pt::before {
+  content: "– ";
+}
