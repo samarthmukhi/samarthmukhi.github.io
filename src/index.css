@@ -115,6 +115,23 @@ p {
 
 /* ---------- lines ---------- */
 
+/* the name spans exactly 3 lines of the rhythm (2 on phones) */
+.name {
+  margin: 0;
+  font-size: calc(var(--lh) * 2.15);
+  line-height: calc(var(--lh) * 3);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .name {
+    font-size: calc(var(--lh) * 1.45);
+    line-height: calc(var(--lh) * 2);
+  }
+}
+
 .l {
   min-height: var(--lh);
 }

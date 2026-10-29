@@ -5,6 +5,7 @@ import ThemeToggle from "../components/ThemeToggle";
 import SwarmExhibit from "../components/SwarmExhibit";
 import RefereeExhibit from "../components/RefereeExhibit";
 import ContactForm from "../components/ContactForm";
+import UsFlag from "../components/UsFlag";
 import {
   profile,
   education,
@@ -55,12 +56,17 @@ export default function Document() {
 
       {/* ---------- letterhead ---------- */}
       <div className="row u">
-        <span>{profile.name}</span>
+        <span />
+
         <ThemeToggle />
       </div>
+      <h1 className="name u">{profile.name}</h1>
       <div className="u">Computer Science + Statistics</div>
       <div className="u">University of Wisconsin-Madison</div>
-      <div className="u">{profile.location}</div>
+      <div className="u">
+        {profile.location}, United States
+        <UsFlag />
+      </div>
       <Blank />
       {notFound && (
         <>
