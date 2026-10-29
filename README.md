@@ -1,13 +1,13 @@
 # samarthmukhi.com
 
-Personal portfolio for Samarth Mukhi. React + Vite + Tailwind CSS v4 + React Three Fiber.
+Personal portfolio for Samarth Mukhi. React + Vite + Tailwind CSS v4. Monospace "working record" design.
 
 ## Structure
 
 ```
 src/
-  components/   Layout, CustomCursor, ParticleField, DataGlobe, Section
-  pages/        Home, About, Experience, Projects, Research, Awards, Contact, NotFound
+  components/   Gutter, ThemeToggle, SwarmExhibit, RefereeExhibit, ContactForm
+  pages/        Document (the whole site is one numbered document)
   data/         content.js — all site copy, lives in one place
 public/
   CNAME         samarthmukhi.com (custom domain for GitHub Pages)

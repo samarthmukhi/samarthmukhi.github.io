@@ -1,15 +1,15 @@
 import { createContext, useContext, useState, useEffect, useCallback } from "react";
 
-const ThemeContext = createContext({ theme: "dark", toggle: () => {} });
+const ThemeContext = createContext({ theme: "light", toggle: () => {} });
 
 function getInitialTheme() {
   if (typeof document !== "undefined" && document.documentElement.dataset.theme) {
     return document.documentElement.dataset.theme;
   }
   try {
-    return localStorage.getItem("theme") || "dark";
+    return localStorage.getItem("theme-v2") || "light";
   } catch {
-    return "dark";
+    return "light";
   }
 }
 
@@ -19,7 +19,7 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     try {
-      localStorage.setItem("theme", theme);
+      localStorage.setItem("theme-v2", theme);
     } catch {
       /* ignore storage failures */
     }

@@ -159,6 +159,7 @@ export const experience = [
 export const projects = [
   {
     name: "SwarmFolio Referee",
+    year: "2026",
     tagline: "AI proposes, math decides: an exact verifier for AI-drafted portfolios (LA Hacks 2026)",
     description:
       "In a paired experiment across two LLMs, about 80% of AI first-draft portfolios broke at least one client rule. Built solo in 24 hours at LA Hacks 2026, SwarmFolio Referee is a five-agent investment committee on Fetch.ai: three LLM analysts (Macro, Fundamentals, Risk) write memos, a Chair agent drafts the portfolio, and a non-LLM Referee checks it with an exact mixed-integer optimization model (CVXPY + SCIP). The Referee reports every rule broken and by how much, proves when a client's rules can't all be met, isolates the smallest set of clashing rules and the cheapest fix, and repairs violations to the nearest compliant portfolio with minimum turnover. Analysts revise for up to three rounds, and \"rule price tags\" show what each rule costs in risk-adjusted return. It runs as a paid service with pay-per-check billing via Fetch's Agent Payment Protocol and Stripe (sandbox), deployed live with 293 automated tests.",
@@ -172,6 +173,7 @@ export const projects = [
   },
   {
     name: "SwarmFolio",
+    year: "2026",
     tagline: "Particle swarm vs. Markowitz portfolio optimization",
     description:
       "A full-stack portfolio optimizer that pits classical Markowitz mean-variance optimization against a particle swarm optimizer written from scratch. Markowitz can't express real-world rules like a maximum number of holdings (cardinality) or minimum position sizes; the swarm can. On the unconstrained problem the swarm reproduces the analytic Markowitz optimum (Sharpe 1.377 vs. 1.380), a feasibility layer flags impossible constraint sets, and a look-ahead-safe walk-forward backtest reproduces the classic 1/N puzzle, where naive equal weighting beats out-of-sample max-Sharpe optimization.",
@@ -183,6 +185,7 @@ export const projects = [
   },
   {
     name: "OptionsForge",
+    year: "2026",
     tagline: "Live Black-Scholes & Monte Carlo option pricing",
     description:
       "A web app that prices European stock options in real time from live market data: enter any public ticker and it estimates volatility, then prices the option two independent ways — a Monte Carlo simulation and the closed-form Black-Scholes formula — with a convergence chart showing the simulation settle onto the exact price as the number of paths grows. The pricing engine models stock prices with geometric Brownian motion and cross-validates both methods, which agree to within a fraction of a percent.",
@@ -194,6 +197,7 @@ export const projects = [
   },
   {
     name: "NautiClean",
+    year: "2020-25",
     tagline: "Semi-autonomous marine trash collection system",
     description:
       "A student-led marine cleanup project using GPS-guided navigation and sensor-driven pathfinding to reach high-density waste zones in polluted water. Particle swarm optimization routes the platform more efficiently than static or manual systems.",
@@ -211,6 +215,7 @@ export const projects = [
   },
   {
     name: "TraffIQ",
+    year: "2024",
     tagline: "AI adaptive traffic management",
     description:
       "A computer vision traffic system that adjusts signal timing to real-time vehicle density. Camera-based detection feeds a signal engine that cuts idle time and improves throughput compared to static timers.",
@@ -218,6 +223,7 @@ export const projects = [
   },
   {
     name: "Uncorking Insights",
+    year: "2025",
     tagline: "A wine quality analysis from the Young Data Scientists Summer Program, Plaksha University",
     description:
       "Used Stata to find predictive trends across consumer and chemical data during a week-long applied data science program. Faculty commended the work for its analytical rigor and clear presentation.",
@@ -272,6 +278,16 @@ export const awards = [
     org: "Multiple accolades across competitions",
     tag: "Multiple",
   },
+];
+
+export const sections = [
+  { id: "work", label: "Selected work" },
+  { id: "projects", label: "Projects" },
+  { id: "experience", label: "Experience" },
+  { id: "research", label: "Research" },
+  { id: "about", label: "Education" },
+  { id: "awards", label: "Awards" },
+  { id: "contact", label: "Contact" },
 ];
 
 export const navLinks = [
