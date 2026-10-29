@@ -6,11 +6,11 @@ export const socials = {
 
 export const profile = {
   name: "Samarth Mukhi",
-  tagline: "Computer science & autonomous systems builder",
+  tagline: "Optimization, quant finance & AI systems",
   summary:
-    "I build systems that work in the real world, using data, robotics, and optimization. I care more about solutions that can actually be deployed than models that only run in a notebook. I'm a Computer Science student at the University of Wisconsin-Madison and the founder of NautiClean, a semi-autonomous marine cleanup system. My work spans GPS-guided navigation, particle swarm optimization for path planning, and computer vision for adaptive traffic control.",
+    "I build systems where math, not guesswork, makes the final call. I'm a Computer Science and Statistics student at the University of Wisconsin-Madison, also pursuing a certificate in Economic Analytics, and I'm most interested in quantitative finance, optimization, and AI that can be verified. At LA Hacks 2026 I built SwarmFolio Referee, where AI agents draft investment portfolios and an exact mixed-integer optimizer checks every client rule, proves when rules can't all be met, and repairs violations. Before that I built SwarmFolio, a particle swarm portfolio optimizer, and OptionsForge, a live option pricer. My path started with NautiClean, a semi-autonomous marine cleanup robot whose swarm-optimized path planning earned India's INSPIRE-MANAK National Award and became my first-author paper.",
   location: "Madison, Wisconsin",
-  address: "420 N Park St, Madison, Wisconsin 53706",
+  address: "Madison, Wisconsin",
   email: "samarth.mukhi@gmail.com",
   emails: [
     {
@@ -33,8 +33,9 @@ export const profile = {
   linkedin: socials.linkedin,
   x: socials.x,
   interests: [
-    "Optimization and decision systems",
-    "Applied AI and computer vision",
+    "Quantitative finance and portfolio optimization",
+    "Exact and heuristic optimization (MIP, PSO)",
+    "Verifiable AI: agents checked by math",
     "Autonomous systems for real-world impact",
   ],
 };
@@ -42,7 +43,8 @@ export const profile = {
 export const education = [
   {
     school: "University of Wisconsin-Madison",
-    detail: "Bachelor of Science, Computer Science",
+    detail:
+      "Bachelor of Science, Computer Science and Statistics (intended double major), Certificate in Economic Analytics. Coursework: Data Science Programming I (CS 220), Calculus I (MATH 221), Microeconomics (ECON 101). Activities: Transcend UW, dot Data Science.",
     period: "September 2026 to May 2030",
   },
   {
@@ -71,7 +73,15 @@ export const academicAchievements = [
 
 export const skills = [
   "Python",
+  "SQL",
   "Java",
+  "C++",
+  "HTML/CSS",
+  "Mixed-Integer & Convex Optimization (CVXPY, SCIP)",
+  "Monte Carlo Simulation",
+  "NumPy, SciPy & pandas",
+  "FastAPI & React",
+  "LLM Agents (LangChain, Fetch.ai)",
   "Computer Vision (OpenCV)",
   "Particle Swarm Optimization",
   "Data Analysis (Stata)",
@@ -93,17 +103,20 @@ export const certifications = [
 
 export const experience = [
   {
-    org: "Scoviq",
-    role: "Co-Founder",
-    period: "June 2026 to Present",
+    org: "Recreation & Wellbeing, UW-Madison",
+    role: "Audiovisual Support II",
+    period: "October 2026 to Present",
     location: "Madison, Wisconsin",
     description:
-      "Co-founding a new venture in Madison, building on the systems and optimization work behind NautiClean and TraffIQ.",
-    links: [
-      { label: "Website", href: "https://scoviq.com" },
-      { label: "Instagram", href: "https://www.instagram.com/scoviqhq/" },
-      { label: "X", href: "https://x.com/scoviqhq" },
-    ],
+      "Maintain and troubleshoot audiovisual and technology systems across the Nicholas Recreation Center and the Bakke Recreation & Wellbeing Center. I help with technology projects and system maintenance, keep back-end systems and documentation current, and track system performance in weekly reports.",
+  },
+  {
+    org: "Priority Labs, UW-Madison",
+    role: "Builder, Fall 2026 Cohort",
+    period: "September 2026 to October 2026",
+    location: "Madison, Wisconsin",
+    description:
+      "A nine-day builder sprint focused on execution and learning through experimentation. On the technical track I worked hands-on with LLMs, RAG, tool use, structured outputs, and agent orchestration, and prototyped a generate-verify-revise loop: an agent proposes portfolio constraints, a deterministic layer checks them against mathematical and business rules, quantifies conflicts, and feeds them back for revision. On the market track I researched SwarmFolio's customer segments, portfolio-construction workflows, and incumbent platforms, which narrowed it to a verification layer for AI investment reasoning in direct indexing and wealthtech. I presented the prototype and findings to Madison's startup community; that hypothesis became SwarmFolio Referee two weeks later.",
   },
   {
     org: "NautiClean",
@@ -144,6 +157,30 @@ export const experience = [
 ];
 
 export const projects = [
+  {
+    name: "SwarmFolio Referee",
+    tagline: "AI proposes, math decides: an exact verifier for AI-drafted portfolios (LA Hacks 2026)",
+    description:
+      "In a paired experiment across two LLMs, about 80% of AI first-draft portfolios broke at least one client rule. Built solo in 24 hours at LA Hacks 2026, SwarmFolio Referee is a five-agent investment committee on Fetch.ai: three LLM analysts (Macro, Fundamentals, Risk) write memos, a Chair agent drafts the portfolio, and a non-LLM Referee checks it with an exact mixed-integer optimization model (CVXPY + SCIP). The Referee reports every rule broken and by how much, proves when a client's rules can't all be met, isolates the smallest set of clashing rules and the cheapest fix, and repairs violations to the nearest compliant portfolio with minimum turnover. Analysts revise for up to three rounds, and \"rule price tags\" show what each rule costs in risk-adjusted return. It runs as a paid service with pay-per-check billing via Fetch's Agent Payment Protocol and Stripe (sandbox), deployed live with 293 automated tests.",
+    tech: ["Python", "CVXPY", "SCIP", "FastAPI", "React", "Fetch.ai", "LangChain", "Stripe"],
+    links: [
+      { label: "Live App", href: "https://swarmfolio.biz" },
+      { label: "Devpost", href: "https://devpost.com/software/swarmfolio-referee" },
+      { label: "GitHub", href: "https://github.com/SwarmFolio-Labs/SwarmFolio---Referee" },
+      { label: "Demo Video", href: "https://youtu.be/ngHaVytPs6M" },
+    ],
+  },
+  {
+    name: "SwarmFolio",
+    tagline: "Particle swarm vs. Markowitz portfolio optimization",
+    description:
+      "A full-stack portfolio optimizer that pits classical Markowitz mean-variance optimization against a particle swarm optimizer written from scratch. Markowitz can't express real-world rules like a maximum number of holdings (cardinality) or minimum position sizes; the swarm can. On the unconstrained problem the swarm reproduces the analytic Markowitz optimum (Sharpe 1.377 vs. 1.380), a feasibility layer flags impossible constraint sets, and a look-ahead-safe walk-forward backtest reproduces the classic 1/N puzzle, where naive equal weighting beats out-of-sample max-Sharpe optimization.",
+    tech: ["Python", "NumPy", "SciPy", "FastAPI", "React"],
+    links: [
+      { label: "Live App", href: "https://swarmfolio.vercel.app" },
+      { label: "GitHub", href: "https://github.com/samarthmukhi/SwarmFolio" },
+    ],
+  },
   {
     name: "OptionsForge",
     tagline: "Live Black-Scholes & Monte Carlo option pricing",

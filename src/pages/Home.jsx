@@ -33,9 +33,9 @@ export default function Home() {
             variants={fadeUp}
             className="mb-7 text-base leading-relaxed text-(--color-text-muted)"
           >
-            Computer Science student at UW-Madison. Founder of NautiClean,
-            co-founder of Scoviq and TraffIQ. I build deployable AI and robotics
-            systems.
+            CS &amp; Statistics student at UW-Madison. I build systems where math
+            checks AI, from an exact-optimization referee for AI-drafted
+            portfolios to swarm-optimized path planning for marine cleanup.
           </motion.p>
           <motion.div
             variants={fadeUp}

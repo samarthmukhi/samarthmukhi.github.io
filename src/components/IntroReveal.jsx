@@ -39,7 +39,7 @@ export default function IntroReveal({ onComplete }) {
           transition={d(0.8, 0.38)}
           className="font-mono text-[11px] tracking-[0.3em] text-(--color-text-faint) uppercase"
         >
-          Computer science &amp; autonomous systems
+          Optimization, quant finance &amp; AI
         </motion.p>
       </div>
 
